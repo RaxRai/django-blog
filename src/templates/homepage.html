@@ -1,0 +1,15 @@
+{% extends "blog_app/base.html" %}
+
+{% block content %}
+
+<h1></h1>
+
+{% for a in blogs %}
+    {% include "blog_app/list-inline.html" with aik_blog=a truncate=True detail=False %}
+    <!-- here aik_blog allows us to use the list-inline.html in multiple places
+  				or else we wil have to keep the context same
+  				so always try to use this-->
+
+{% endfor %}
+
+{% endblock %}

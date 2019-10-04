@@ -1,0 +1,35 @@
+<!-- <li> <a href='/blog/{{aik_blog.slug}}'> {{aik_blog.title}} </a> </li> -->
+
+<div class="col-8 col-md-8 mx-auto mb-3">
+  <div class= "card {% if not aik_blog.publish_date %}
+                border border-warning text-dark
+                {% endif %} ">
+    <div class="card-body">
+        {% if aik_blog.image %}
+          <a href="/blog/{{aik_blog.slug}}">
+          <center><div class="col-10">
+          <img src="{{aik_blog.image.url}}" class="card-img-top" />
+        </div>
+      </center>
+        </a>
+        {% endif %}
+      <h5 class="card-title"> {{aik_blog.title}}</h5>
+      <p class="card-text">
+
+        <!-- display publish date -->
+        <small class="text-muted"> {{ aik_blog.publish_date}} </small>
+        {% if truncate %}
+          {{aik_blog.content|linebreaks|truncatewords:30}}
+        {% else %}
+          {{aik_blog.content|linebreaks }}
+        {% endif %}
+       </p>
+       {% if not detail %}
+          {% if not aik_blog.publish_date %}This is a Draft {% endif %}
+        <a href="/blog/{{aik_blog.slug}}">View</a>
+       {% endif %}
+    </div>
+
+  </div>
+
+</div>
